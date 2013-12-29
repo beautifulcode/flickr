@@ -1,5 +1,7 @@
 (function(){
-  // Config Endpoints Etc
+
+  // Configurate your thing-a-ma-bobs
+  //
   App.Config = {
     $stage: $('#app'),
     $api_key: 'a59c1f7bcc0674c7844e5be661354094',
