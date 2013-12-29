@@ -1,4 +1,13 @@
 App.Collections.Photos = Backbone.Collection.extend({
   model: App.Models.Photo,
-  url: App.Config.$base_url + App.Config.$api_method + '&api_key='+App.Config.$api_key + '&photoset_id=' + App.Config.$photoset_id + '&format=json'
+  url: function(){
+    return App.Config.$base_url + "?" + $.param(this.urlOptions);
+  },
+
+  urlOptions: {
+    method: App.Config.$api_method,
+    photoset_id: App.Config.$photoset_id,
+    api_key: App.Config.$api_key,
+    format: 'json'
+  }
 });
