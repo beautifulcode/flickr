@@ -4,7 +4,8 @@
   //
   App.Config = {
     $stage: $('#app'),
-    $api_key: 'a59c1f7bcc0674c7844e5be661354094',
+    $photoDetail: $('#photo-detail'),
+    $api_key: 'cd3418e4c0acf3025281b4466df5d474',
     $photoset_id: '72157632502597781',
     $base_url: 'http://api.flickr.com/services/rest/',
     $api_method: 'flickr.photosets.getPhotos',
