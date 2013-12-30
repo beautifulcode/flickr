@@ -9,7 +9,7 @@ App.Models.Photo = Backbone.Model.extend({
   },
 
   detailSrcUrl: function(){
-    return "http://farm"+this.get('farm')+".staticflickr.com/"+this.get('server')+"/"+this.get('id')+"_"+this.get('secret')+".jpg";
+    return "http://farm"+this.get('farm')+".staticflickr.com/"+this.get('server')+"/"+this.get('id')+"_"+this.get('secret')+"_c.jpg";
   }
 
 

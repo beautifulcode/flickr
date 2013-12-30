@@ -4,6 +4,7 @@
   //
   App.Config = {
     $stage: $('#app'),
+    $photoSet: $('#photos'),
     $photoDetail: $('#photo-detail'),
     $api_key: 'cd3418e4c0acf3025281b4466df5d474',
     $photoset_id: '72157632502597781',

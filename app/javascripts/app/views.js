@@ -67,19 +67,26 @@ App.Views.PhotoSetView = React.createClass({
 //
 App.Views.ApplicationView = Backbone.View.extend({
 
-  initialize: function(){
-    this.photoset_view = App.Views.PhotoSetView({models: []});
-    React.renderComponent(
-      this.photoset_view, document.getElementById('app')
-    );
-
-    App.Config.$stage.on('photo.clicked', this.showPhotoDetail);
+  events: {
+    'photo.clicked': 'showDetail',
+    'click nav a': 'showPage'
   },
 
-  showPhotoDetail: function(e, m){
+  initialize: function(){
+    this.photoset_view = App.Views.PhotoSetView({models: []});
+    React.renderComponent( this.photoset_view, App.Config.$photoSet[0]); 
+  },
+
+  showPage: function(e){
+    var link = $(e.target);
+    var page = link.attr('href').replace('#page-', '');
+    this.fetchPhotos(page);
+  },
+
+  showDetail: function(e, view){
 
     React.renderComponent(
-      App.Views.PhotoDetailView({model: m.props.model}),
+      App.Views.PhotoDetailView({model: view.props.model}),
       App.Config.$photoDetail[0]
     );
 
@@ -87,7 +94,8 @@ App.Views.ApplicationView = Backbone.View.extend({
 
   },
 
-  fetchPhotos: function(){
+  fetchPhotos: function(page){
+
     // This old one
     var self = this;
 
@@ -95,7 +103,7 @@ App.Views.ApplicationView = Backbone.View.extend({
     window.jsonFlickrApi = self.onFetchPhotos;
 
     // Get the photos using backbone collection fetch
-    var photos = new App.Collections.Photos({});
+    var photos = new App.Collections.Photos({page: page || 1});
     photos.fetch({ success: self.onFetchPhotos, dataType: "jsonp" });
 
   },
