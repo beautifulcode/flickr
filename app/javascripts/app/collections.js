@@ -8,6 +8,7 @@ App.Collections.Photos = Backbone.Collection.extend({
     method: App.Config.$api_method,
     photoset_id: App.Config.$photoset_id,
     api_key: App.Config.$api_key,
+    per_page: 20,
     format: 'json'
   }
 });
