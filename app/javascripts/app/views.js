@@ -53,9 +53,8 @@ App.Views.PhotoSetView = React.createClass({
   render: function(){
 
     var photos = this.props.models;
-    var views = [];
-    _.each(photos, function(m){
-      views.push(dom.li({}, App.Views.PhotoView({model: m})));
+    var views = _.map(photos, function(m){
+      return dom.li({}, App.Views.PhotoView({model: m}));
     });
     return dom.ul({className: 'photoset'}, views);
   }
