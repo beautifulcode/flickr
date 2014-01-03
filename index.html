@@ -2,19 +2,19 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   
-    <title>Flickr</title>
+    <title>Flickr Photoset Viewr &trade;</title>
 
     <link href="app/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
     
   </head>
   <body>
 
-    <h1>Flickr Photobox Example</h1>
-
     <section id="app">
 
+      <h1>Flickr <span>Photoset /</span></h1>
+      <h2><input type="text" name="photoset" id="photoset" value="" /><button type="submit">></button></h2>
+
       <nav>
-        <h2>Photoset: <input type="text" name="" id="" value="" /></h2>
         <a href="#page-1">Pages</a>
         <a href="#page-1">1</a>
         <a href="#page-2">2</a>
@@ -22,10 +22,8 @@
         <a href="#page-4">4</a>
         <a href="#page-5">5</a>
       </nav>
- 
-      <section id="photos">
-        <p class="loading">Loading...</p> 
-      </section>
+
+      <section id="photos"><p class="loading">One moment, loading some beautiful images...</p></section>
 
       <section id="photo-detail"></section>
 

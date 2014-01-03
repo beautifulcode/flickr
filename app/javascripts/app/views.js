@@ -10,7 +10,7 @@ App.Views.UserView = Backbone.View.extend({
 App.Views.PhotoDetailView = React.createClass({
 
   onClickDetail: function(){
-    App.Config.$photoDetail.css({display: 'none'});
+    App.Config.$photoDetail.toggleClass('active');
   },
 
   render: function(){
@@ -67,6 +67,7 @@ App.Views.PhotoSetView = React.createClass({
 App.Views.ApplicationView = Backbone.View.extend({
 
   events: {
+    'change #photoset': 'changePhotoset',
     'photo.clicked': 'showDetail',
     'click nav a': 'showPage'
   },
@@ -74,6 +75,11 @@ App.Views.ApplicationView = Backbone.View.extend({
   initialize: function(){
     this.photoset_view = App.Views.PhotoSetView({models: []});
     React.renderComponent( this.photoset_view, App.Config.$photoSet[0]); 
+  },
+
+  changePhotoset: function(e, thing){
+    //var photoset = $('#photoset').val();
+    //App.Config.$photoset_id = photoset;
   },
 
   showPage: function(e){
@@ -89,7 +95,7 @@ App.Views.ApplicationView = Backbone.View.extend({
       App.Config.$photoDetail[0]
     );
 
-    App.Config.$photoDetail.css({display: 'block'});
+    App.Config.$photoDetail.toggleClass('active');
 
   },
 
@@ -108,6 +114,7 @@ App.Views.ApplicationView = Backbone.View.extend({
   },
 
   onFetchPhotos: function(data, xhr){
+    $('#photoset').val(data.photoset.title)
     // Populate the collection once it's successfully fetched
     app.photos = new App.Collections.Photos(data.photoset.photo);
     // Set the props so React will render down the tree
