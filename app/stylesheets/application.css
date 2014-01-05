@@ -71,10 +71,13 @@ nav a{display: inline-block; padding: 5px; margin-left: 5px; text-decoration: no
   -o-transition: opacity .15s ease-in-out;
   transition: opacity .15s ease-in-out;
 }
+
 #photo-detail.active{
   opacity: 1; 
   top: 0;
 }
+
+.photo.meta{padding: 1em 2em;}
 
 
 @media (max-width: 1200px) {

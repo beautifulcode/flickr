@@ -9,7 +9,8 @@ App.Views.UserView = Backbone.View.extend({
 //
 App.Views.PhotoDetailView = React.createClass({
 
-  onClickDetail: function(){
+  toggleDetail: function(e, el){
+    e.preventDefault();
     App.Config.$photoDetail.toggleClass('active');
   },
 
@@ -17,9 +18,11 @@ App.Views.PhotoDetailView = React.createClass({
     var self = this;
     var photo = this.props.model;
     return dom.section({className: 'photo detail'}, [
-            dom.img({onClick: self.onClickDetail, src: photo.detailSrcUrl()}),
+            dom.img({onClick: self.toggleDetail, src: photo.detailSrcUrl()}),
             dom.aside({className: 'photo meta'}, [
-              dom.p({}, 'Meta World Peace wuz here.')
+              dom.h3({}, photo.get('title')),
+              dom.p({}, "Other information could be retrieved here"),
+              dom.a({className: 'close', onClick: self.toggleDetail, href: ''}, "Close")
             ]),
     ]);
   }
@@ -75,6 +78,7 @@ App.Views.ApplicationView = Backbone.View.extend({
   initialize: function(){
     this.photoset_view = App.Views.PhotoSetView({models: []});
     React.renderComponent( this.photoset_view, App.Config.$photoSet[0]); 
+    this.supportEscapeKey();
   },
 
   changePhotoset: function(e, thing){
@@ -119,6 +123,13 @@ App.Views.ApplicationView = Backbone.View.extend({
     app.photos = new App.Collections.Photos(data.photoset.photo);
     // Set the props so React will render down the tree
     app.photoset_view.setProps({models: app.photos.models});
+  },
+
+  supportEscapeKey: function(){
+    $(document).keyup(function(e){
+      if(e.keyCode === 27)
+        App.Config.$photoDetail.removeClass('active');
+    }); 
   }
   
 
