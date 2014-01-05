@@ -94,6 +94,8 @@ App.Views.ApplicationView = Backbone.View.extend({
 
   showDetail: function(e, view){
 
+    $(App.Config.$photoDetail[0]).find('img').attr('src', '');
+
     React.renderComponent(
       App.Views.PhotoDetailView({model: view.props.model}),
       App.Config.$photoDetail[0]

@@ -62,6 +62,7 @@ nav a{display: inline-block; padding: 5px; margin-left: 5px; text-decoration: no
   opacity: 0;
   display: block;
   position: absolute; top: -1000px; 
+  padding: 2em;
   zoom: 1;
   filter: alpha(opacity=50);
   opacity: 0.5;
